@@ -35,6 +35,9 @@
     <ClCompile Include="airportmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="greatcirclegenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="airports.csv">
@@ -49,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="airportmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="greatcirclegenerator.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

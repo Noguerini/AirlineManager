@@ -68,3 +68,25 @@ QHash<int, QByteArray> AirportModel::roleNames() const {
     return { {NameRole, "name"}, {IataRole, "iata"},
              {CoordinateRole, "coordinate"}, {SizeRole, "size"} };
 }
+
+QStringList AirportModel::allIataCodes() const {
+    QStringList list;
+    for (const auto& a : m_visible)
+        list.append(a.iata);
+    return list;
+}
+
+QStringList AirportModel::allNames() const {
+    QStringList list;
+    for (const auto& a : m_visible)
+        list.append(a.name);
+    return list;
+}
+
+QGeoCoordinate AirportModel::coordinateFromIATA(const QString &iata_code) const {
+    for (const auto& a : m_visible) {
+        if (a.iata == iata_code)
+            return a.coord;
+    }
+    return {};
+}

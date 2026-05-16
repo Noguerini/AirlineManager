@@ -25,6 +25,10 @@ public:
     QString sizeFilter() const { return m_sizeFilter; }
     void setSizeFilter(const QString& f);
 
+    Q_INVOKABLE QStringList allIataCodes() const;
+    Q_INVOKABLE QStringList allNames() const;
+    Q_INVOKABLE QGeoCoordinate coordinateFromIATA(const QString &iata_code) const;
+
 signals:
     void sizeFilterChanged();
 

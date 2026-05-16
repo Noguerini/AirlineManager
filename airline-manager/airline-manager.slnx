@@ -1,6 +1,7 @@
 <Solution>
   <Configurations>
     <Platform Name="ARM64" />
+    <Platform Name="x64" />
   </Configurations>
-  <Project Path="airline-manager.vcxproj" />
+  <Project Path="airline-manager.vcxproj" Id="9eff0a79-4760-47b5-8e08-219d14a57f46" />
 </Solution>

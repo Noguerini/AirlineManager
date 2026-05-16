@@ -21,6 +21,9 @@ Map {
 	center: QtPositioning.coordinate(0, 0)
 	zoomLevel: 0
 
+	property var iataFilter: []
+	property var routePath: []
+
 	activeMapType: {
 		for (let i = 0; i < supportedMapTypes.length; i++) {
 			if (supportedMapTypes[i].name.indexOf("Custom") !== -1)
@@ -35,6 +38,7 @@ Map {
 			coordinate: model.coordinate
 			anchorPoint.x: 6
 			anchorPoint.y: 6
+			visible: map.iataFilter.length === 0 || map.iataFilter.includes(model.iata)
 			sourceItem: Row {
 				spacing: 4
 				Rectangle {
@@ -53,6 +57,10 @@ Map {
 		}
 	}
 
+	MapPolyline {
+		path: map.routePath 
+	}
+	
 	DragHandler {
 		property real lastX: 0
 		property real lastY: 0

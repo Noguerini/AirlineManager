@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "airportmodel.h"
+#include "greatcirclegenerator.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +16,9 @@ int main(int argc, char *argv[])
 
     AirportModel airports;
     engine.rootContext()->setContextProperty("airportModel", &airports);
+
+    GreatCircleGenerator gcgenerator;
+    engine.rootContext()->setContextProperty("gcgeneratorModel", &gcgenerator);
 
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/airline-manager/main.qml")));
     if (engine.rootObjects().isEmpty())
