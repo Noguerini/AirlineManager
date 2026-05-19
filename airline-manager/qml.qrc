@@ -2,7 +2,9 @@
     <qresource prefix="/qt/qml/airline-manager">
         <file>main.qml</file>
         <file>airports.csv</file>
+        <file>aircraft.csv</file>
         <file>WorldMap.qml</file>
         <file>AirportSelector.qml</file>
+        <file>RouteDetails.qml</file>
     </qresource>
 </RCC>

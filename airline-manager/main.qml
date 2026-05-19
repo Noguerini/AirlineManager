@@ -31,6 +31,20 @@ Window {
         }
     }
 
+    function computeDetails() {
+        var dep = airportSelector.departure
+        var arr = airportSelector.arrival
+        var ac = airportSelector.aircraft
+        if (dep === "" || arr === "" || ac === "") {
+            routeDetails.clear()
+            return
+        }
+        var coord1 = airportModel.coordinateFromIATA(dep)
+        var coord2 = airportModel.coordinateFromIATA(arr)
+        var d = gcgeneratorModel.calculateRouteDetails(coord1, coord2, ac)
+        routeDetails.applyDetails(d)
+    }
+
     AirportSelector {
         id: airportSelector
         anchors.top: parent.top
@@ -44,6 +58,15 @@ Window {
             worldMap.iataFilter = departure !== "" ? [departure, arrival] : []
             updateRoute()
         }
+        onCalculate: computeDetails()
+    }
+
+    RouteDetails {
+        id: routeDetails
+        anchors.top: airportSelector.bottom
+        anchors.topMargin: 8
+        anchors.right: parent.right
+        anchors.rightMargin: 16
     }
 
     Item {

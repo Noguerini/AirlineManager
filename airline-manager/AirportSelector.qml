@@ -6,7 +6,7 @@ Rectangle {
     id: rootItem
 
     width: 300
-    height: 230
+    height: 330
     color: "#ffffff"
     opacity: 0.97
     border.color: "#d0d7de"
@@ -16,9 +16,18 @@ Rectangle {
     property var airports: []
     property string departure: ""
     property string arrival: ""
+    property string aircraft: ""
+
+    signal calculate()
 
     Component.onCompleted: {
         airports = airportModel.allIataCodes()
+        var planes = gcgeneratorModel.availableAircraft()
+        aircraftCombo.model = planes
+        if (planes.length > 0) {
+            aircraftCombo.currentIndex = 0
+            rootItem.aircraft = planes[0]
+        }
     }
 
     function suggestionsFor(text) {
@@ -182,19 +191,49 @@ Rectangle {
                     }
                 }
             }
-            Item {
+        }
+
+        // ----- Aircraft -----
+        Column {
+            width: parent.width
+            spacing: 4
+
+            Text {
+                text: qsTr("Aircraft")
+                font.pixelSize: 11
+                color: "#656d76"
+            }
+
+            ComboBox {
+                id: aircraftCombo
                 width: parent.width
-                height: 50
-                Button {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: 75
-                    height: parent.height
-                    background: Rectangle {
-                        color: "blue"
-                        radius: 10
-                    }
-                    text: "Calculate"
+                height: 36
+                font.pixelSize: 13
+                onCurrentTextChanged: rootItem.aircraft = currentText
+            }
+        }
+
+        // ----- Calculate -----
+        Item {
+            width: parent.width
+            height: 40
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 100
+                height: parent.height
+                background: Rectangle {
+                    color: "#0969da"
+                    radius: 8
                 }
+                contentItem: Text {
+                    text: "Calculate"
+                    color: "white"
+                    font.pixelSize: 13
+                    font.bold: true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: rootItem.calculate()
             }
         }
     }

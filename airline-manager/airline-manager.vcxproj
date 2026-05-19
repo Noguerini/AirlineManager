@@ -178,9 +178,11 @@
     <ClCompile Include="greatcirclegenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="AirportSelector.qml" />
+    <None Include="RouteDetails.qml" />
     <None Include="WorldMap.qml" />
     <QtRcc Include="qml.qrc" />
     <None Include="airports.csv" />
+    <None Include="aircraft.csv" />
     <None Include="main.qml" />
   </ItemGroup>
   <ItemGroup>

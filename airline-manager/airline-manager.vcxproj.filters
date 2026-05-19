@@ -43,10 +43,16 @@
     <None Include="airports.csv">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="aircraft.csv">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="WorldMap.qml">
       <Filter>Source Files</Filter>
     </None>
     <None Include="AirportSelector.qml">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="RouteDetails.qml">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
